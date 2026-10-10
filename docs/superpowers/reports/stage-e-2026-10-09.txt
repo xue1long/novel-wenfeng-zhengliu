@@ -1,0 +1,7 @@
+Stage E aggregate gate PASSED:
+- Stage A/B/C/D gates still green
+- two consecutive compiles produce byte-identical staging (determinism)
+- validate_dist flags tampering
+- failed compile leaves no compile-manifest.json behind
+- literal scan blocks verbatim source copy
+- staging is ready for stage F eval and stage G packaging; this gate does NOT validate runtime behavior

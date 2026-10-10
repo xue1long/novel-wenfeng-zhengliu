@@ -1,0 +1,6 @@
+Stage C aggregate gate PASSED:
+- Stage A gate still green
+- Stage B gate still green
+- Stage C invariants (imports, hash determinism, parser strictness) hold
+- end-to-end prepare-source -> init-run -> extract-dimensions -> review-dimensions -> compile-bundle chain succeeded (default mixed stub �� bundle <= limited)
+- adversarial evidence_ref with bad hash rejected

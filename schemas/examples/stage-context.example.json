@@ -1,0 +1,17 @@
+{
+  "contract_version": "0.1.0",
+  "trace_id": "trace-2026-10-09-synthetic",
+  "bundle_id": "bundle-0a1b2c3d4e5f-v0_1_0",
+  "stage_id": "scene_design",
+  "retry_count": 0,
+  "stage_snapshot": {
+    "input_refs": ["private-ledger://synthetic-run/entry"],
+    "output_refs": [],
+    "changed_fields": ["scene_goal", "conflict", "turn", "resolution_plan"]
+  },
+  "error_report": {
+    "error_type": "none"
+  },
+  "next_stage": "character_beats",
+  "return_to": null
+}

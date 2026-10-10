@@ -1,0 +1,8 @@
+Stage F aggregate gate PASSED:
+- Stage A/B/C/D/E gates still green
+- run-evaluation --profile happy -> final_state ready (synthetic)
+- run-evaluation --profile mixed -> final_state limited (synthetic)
+- run-evaluation --profile contains_private -> final_state blocked (synthetic)
+- validate-evaluation accepts redacted report
+- Stage F scripts do not import any network module
+- Ready for stage G (final source scan, deterministic package, install gate)

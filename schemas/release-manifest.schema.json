@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/release-manifest.schema.json",
+  "title": "wenfeng release manifest",
+  "description": "Stage G release manifest. Proves the artifact matches the gating records; does not constitute a copyright or security certification (spec §4.9).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "bundle_id",
+    "source_id",
+    "build_hash",
+    "schema_version",
+    "tool_version",
+    "template_version",
+    "compiler_version",
+    "authorization_purpose",
+    "release_state",
+    "compatibility_targets",
+    "skill_hashes",
+    "compile_manifest_hash",
+    "eval_report_hash",
+    "source_scan_hash",
+    "zip_hash",
+    "gate_status"
+  ],
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_\\-]{4,64}$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9]{8,32}$"
+    },
+    "build_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "schema_version": { "type": "string" },
+    "tool_version": { "type": "string" },
+    "template_version": { "type": "string" },
+    "compiler_version": { "type": "string" },
+    "authorization_purpose": {
+      "enum": [
+        "private_only",
+        "shareable_anonymous",
+        "shareable_with_attribution"
+      ]
+    },
+    "release_state": {
+      "enum": ["ready", "limited", "blocked", "incomplete"]
+    },
+    "compatibility_targets": {
+      "type": "array",
+      "minItems": 0,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "skill_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "write_entry", "scene_design", "character_beats",
+        "prose_draft", "style_check", "revision"
+      ],
+      "properties": {
+        "write_entry": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "scene_design": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "character_beats": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "prose_draft": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "style_check": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "revision": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "compile_manifest_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "eval_report_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_scan_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "zip_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "gate_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger", "output", "end_to_end"],
+      "properties": {
+        "trigger": { "type": "boolean" },
+        "output": { "type": "boolean" },
+        "end_to_end": { "type": "boolean" }
+      }
+    }
+  }
+}

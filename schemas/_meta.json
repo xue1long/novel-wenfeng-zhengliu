@@ -1,0 +1,61 @@
+{
+  "schema_dialect": "draft-2020-12",
+  "schema_library": "vendored",
+  "vendor_path": "vendor/json_schema_validate.py",
+  "supported_keywords": [
+    "type",
+    "enum",
+    "const",
+    "pattern",
+    "minLength",
+    "maxLength",
+    "maximum",
+    "minimum",
+    "exclusiveMaximum",
+    "exclusiveMinimum",
+    "minItems",
+    "maxItems",
+    "uniqueItems",
+    "properties",
+    "required",
+    "additionalProperties",
+    "items",
+    "prefixItems",
+    "$ref",
+    "$defs",
+    "definitions",
+    "$schema",
+    "oneOf",
+    "anyOf",
+    "allOf",
+    "not",
+    "format"
+  ],
+  "vendored_extensions": {
+    "x-wenfengRange": "array with exactly 2 integers, half-open [start,end) — enforces start < end and integer-only codepoints. Required for char_offset fields.",
+    "x-wenfengCodepointMax": "integer cap on Unicode codepoints (not UTF-16 code units). Required for evidence-ledger excerpts per spec §4.1."
+  },
+  "unsupported_keywords": [
+    "$id",
+    "$anchor",
+    "$dynamicRef",
+    "$dynamicAnchor",
+    "$vocabulary",
+    "if",
+    "then",
+    "else",
+    "dependentRequired",
+    "dependentSchemas",
+    "propertyNames",
+    "patternProperties",
+    "contentEncoding",
+    "contentMediaType",
+    "contentSchema"
+  ],
+  "format_supported": [
+    "uri-reference"
+  ],
+  "locked_at": "2026-10-10",
+  "owner": "wenfeng-distill-stage-a",
+  "notes": "Stage A only vendors this validator. Contract updates on 2026-10-10 added raw source hashes and compile-manifest source_id; the compiler manifest schema is 0.2.0. Any validator expansion requires updating this lock date and re-running tests/test_vendored_validator.py plus affected contract tests."
+}

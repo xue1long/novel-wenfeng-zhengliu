@@ -1,0 +1,4 @@
+Stage B aggregate gate PASSED:
+- Stage A gate still green
+- Stage B invariants (imports, fingerprint, normalizer, chunker, sampling, holdout, authorization, scan budget, path safety) all hold
+- end-to-end prepare-source -> init-run -> resume-run chain succeeded

@@ -1,0 +1,32 @@
+{
+  "schema_version": "2",
+  "bundle_version": "0.1.0",
+  "source_id": "0a1b2c3d4e5f",
+  "evidence_status": "limited",
+  "claimed_dimensions": ["dialogue_subtext"],
+  "mechanisms": [
+    {
+      "mechanism_id": "M01",
+      "dimension": "dialogue_subtext",
+      "rule": "After a consequential turn, place one visible response beat.",
+      "do_steps": ["Add a single response beat after the consequential turn."],
+      "forbidden_when": "The exchange is a continuous factual summary.",
+      "review_status": "limited",
+      "stage_bindings": ["prose_draft", "revision"],
+      "evidence_summary": { "unique_scenes": 2, "unique_chapters": 1 }
+    }
+  ],
+  "stage_bindings": {
+    "write_entry": [],
+    "scene_design": [],
+    "character_beats": [],
+    "prose_draft": ["M01"],
+    "style_check": ["M01"],
+    "revision": ["M01"]
+  },
+  "content_exclusions": [
+    "named_character_profiles",
+    "verbatim_short_passages"
+  ],
+  "evaluation_ref": "private-ledger://synthetic-run/evaluation"
+}

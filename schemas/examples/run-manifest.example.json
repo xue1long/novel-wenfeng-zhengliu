@@ -1,0 +1,27 @@
+{
+  "run_id": "run-2026-10-09-synthetic",
+  "source_id": "0a1b2c3d4e5f",
+  "run_model_budget_policy_version": "policies/model-budget-policy.json@0.1.0",
+  "scan_budget": {
+    "max_requests": 64,
+    "max_input_tokens_total": 200000,
+    "max_tokens_per_batch": 8000,
+    "overlimit_policy": "degrade_to_limited"
+  },
+  "status": "incomplete",
+  "step_log": [
+    {
+      "step_id": "extract-narrative-voice",
+      "input_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+      "prompt_template_version": "extractors/narrative-voice.md@0.1.0",
+      "model_id": "synthetic-model",
+      "output_path": "private-ledger://synthetic-run/extract/narrative-voice.json",
+      "output_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+      "status": "succeeded",
+      "retry_count": 0,
+      "error_type": ""
+    }
+  ],
+  "created_at": "private-ledger://synthetic-run/created",
+  "last_resumed_at": "private-ledger://synthetic-run/last-resumed"
+}

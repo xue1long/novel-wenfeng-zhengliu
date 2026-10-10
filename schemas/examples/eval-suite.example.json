@@ -1,0 +1,30 @@
+{
+  "suite_version": "0.1.0",
+  "policy_version": "0.1.0",
+  "model": {
+    "id": "synthetic-model",
+    "version": "0.1.0"
+  },
+  "prompt_version": "wenfeng-eval-prompts@0.1.0",
+  "tool_version": "wenfeng-skill@0.1.0",
+  "case_version": "cases@0.1.0",
+  "generation_params": {
+    "temperature": 0.0
+  },
+  "budget": {
+    "max_requests": 64,
+    "max_input_tokens_total": 200000,
+    "max_tokens_per_batch": 8000,
+    "overlimit_policy": "degrade_to_limited"
+  },
+  "entries": [
+    {
+      "case_id": "TC-001",
+      "stage_id": "prose_draft",
+      "input_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "output_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "completion_status": "complete",
+      "incomplete_reason": null
+    }
+  ]
+}

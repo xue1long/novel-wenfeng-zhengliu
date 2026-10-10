@@ -1,0 +1,6 @@
+Stage A aggregate gate PASSED:
+- 13 schemas locked (schema examples validated)
+- bundle cross-references validated
+- 3 policy files validated
+- state machine + invalidation rules validated
+- run 'python -m unittest discover -s tests -v' for the unit-test aggregate

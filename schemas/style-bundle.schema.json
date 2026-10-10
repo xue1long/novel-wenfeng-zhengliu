@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/style-bundle.schema.json",
+  "title": "wenfeng style bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_version",
+    "source_id",
+    "evidence_status",
+    "claimed_dimensions",
+    "mechanisms",
+    "stage_bindings",
+    "content_exclusions",
+    "evaluation_ref"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "2"
+    },
+    "bundle_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{12}$"
+    },
+    "evidence_status": {
+      "enum": ["pending", "approved", "limited", "unsupported"]
+    },
+    "claimed_dimensions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "narrative_voice",
+          "sentence_rhythm",
+          "scene_transition",
+          "dialogue_subtext",
+          "imagery_rhetoric"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "mechanisms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "mechanism_id",
+          "dimension",
+          "rule",
+          "do_steps",
+          "forbidden_when",
+          "review_status",
+          "stage_bindings"
+        ],
+        "properties": {
+          "mechanism_id": { "type": "string", "pattern": "^M[0-9]{2,}$" },
+          "dimension": {
+            "enum": [
+              "narrative_voice",
+              "sentence_rhythm",
+              "scene_transition",
+              "dialogue_subtext",
+              "imagery_rhetoric"
+            ]
+          },
+          "rule": { "type": "string", "minLength": 1 },
+          "do_steps": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "forbidden_when": { "type": "string", "minLength": 1 },
+          "review_status": {
+            "enum": ["pending", "supported", "limited", "unsupported"]
+          },
+          "stage_bindings": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "write_entry",
+                "scene_design",
+                "character_beats",
+                "prose_draft",
+                "style_check",
+                "revision"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "evidence_summary": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["unique_scenes", "unique_chapters"],
+            "properties": {
+              "unique_scenes": { "type": "integer", "minimum": 1 },
+              "unique_chapters": { "type": "integer", "minimum": 1 }
+            },
+            "description": "Counts only. Excerpt bodies must never live in the bundle."
+          }
+        }
+      }
+    },
+    "stage_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "write_entry",
+        "scene_design",
+        "character_beats",
+        "prose_draft",
+        "style_check",
+        "revision"
+      ],
+      "properties": {
+        "write_entry":     { "type": "array", "items": { "type": "string", "pattern": "^M[0-9]{2,}$" }, "uniqueItems": true },
+        "scene_design":    { "type": "array", "items": { "type": "string", "pattern": "^M[0-9]{2,}$" }, "uniqueItems": true },
+        "character_beats": { "type": "array", "items": { "type": "string", "pattern": "^M[0-9]{2,}$" }, "uniqueItems": true },
+        "prose_draft":     { "type": "array", "items": { "type": "string", "pattern": "^M[0-9]{2,}$" }, "uniqueItems": true },
+        "style_check":     { "type": "array", "items": { "type": "string", "pattern": "^M[0-9]{2,}$" }, "uniqueItems": true },
+        "revision":        { "type": "array", "items": { "type": "string", "pattern": "^M[0-9]{2,}$" }, "uniqueItems": true }
+      }
+    },
+    "content_exclusions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "named_character_profiles",
+          "named_locations",
+          "named_organizations",
+          "named_proprietary_terms",
+          "verbatim_long_passages",
+          "verbatim_short_passages",
+          "source_specific_imagery",
+          "plot_specific_events"
+        ]
+      },
+      "uniqueItems": true,
+      "description": "Generic categories only. Source-specific names must live in private exclusions, not here."
+    },
+    "evaluation_ref": {
+      "type": "string",
+      "format": "uri-reference"
+    }
+  }
+}

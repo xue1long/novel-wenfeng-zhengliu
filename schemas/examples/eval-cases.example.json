@@ -1,0 +1,185 @@
+{
+  "case_version": "0.1.0",
+  "trigger_cases": {
+    "must_trigger": [
+      {
+        "case_id": "T-MT-01",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-02",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-03",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-04",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-05",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-06",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-07",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-08",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-09",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      },
+      {
+        "case_id": "T-MT-10",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-trigger case"
+      }
+    ],
+    "must_not_trigger": [
+      {
+        "case_id": "T-NT-01",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-02",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-03",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-04",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-05",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-06",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-07",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-08",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-09",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      },
+      {
+        "case_id": "T-NT-10",
+        "stage_id": "prose_draft",
+        "input_excerpt": "synthetic input excerpt for must-not-trigger case"
+      }
+    ],
+    "boundary": [
+      {
+        "case_id": "T-BD-01",
+        "input_excerpt": "synthetic boundary case"
+      },
+      {
+        "case_id": "T-BD-02",
+        "input_excerpt": "synthetic boundary case"
+      },
+      {
+        "case_id": "T-BD-03",
+        "input_excerpt": "synthetic boundary case"
+      },
+      {
+        "case_id": "T-BD-04",
+        "input_excerpt": "synthetic boundary case"
+      },
+      {
+        "case_id": "T-BD-05",
+        "input_excerpt": "synthetic boundary case"
+      }
+    ]
+  },
+  "output_cases": [
+    {
+      "case_id": "O-001",
+      "stage_id": "prose_draft",
+      "kind": "normal"
+    },
+    {
+      "case_id": "O-002",
+      "stage_id": "prose_draft",
+      "kind": "missing_input"
+    },
+    {
+      "case_id": "O-003",
+      "stage_id": "prose_draft",
+      "kind": "negative_rule"
+    },
+    {
+      "case_id": "O-004",
+      "stage_id": "prose_draft",
+      "kind": "stop_condition"
+    }
+  ],
+  "end_to_end_pairs": [
+    {
+      "pair_id": "EP-01",
+      "brief": "synthetic brief 1",
+      "scenario_class": "opening_meet"
+    },
+    {
+      "pair_id": "EP-02",
+      "brief": "synthetic brief 2",
+      "scenario_class": "opening_meet"
+    },
+    {
+      "pair_id": "EP-03",
+      "brief": "synthetic brief 3",
+      "scenario_class": "opening_meet"
+    },
+    {
+      "pair_id": "EP-04",
+      "brief": "synthetic brief 4",
+      "scenario_class": "opening_meet"
+    },
+    {
+      "pair_id": "EP-05",
+      "brief": "synthetic brief 5",
+      "scenario_class": "opening_meet"
+    },
+    {
+      "pair_id": "EP-06",
+      "brief": "synthetic brief 6",
+      "scenario_class": "opening_meet"
+    }
+  ]
+}

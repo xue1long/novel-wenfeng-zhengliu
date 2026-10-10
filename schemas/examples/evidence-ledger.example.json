@@ -1,0 +1,18 @@
+{
+  "run_id": "run-2026-10-09-synthetic",
+  "entries": [
+    {
+      "entry_id": "ev-0001",
+      "mechanism_id": "M01",
+      "chunk_id": "ck-0001-opening",
+      "char_offset": [
+        0,
+        200
+      ],
+      "excerpt": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "scope": "opening beats",
+      "counter_examples": [],
+      "decision": "supports"
+    }
+  ]
+}

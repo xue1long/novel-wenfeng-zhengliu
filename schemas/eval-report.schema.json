@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/eval-report.schema.json",
+  "title": "wenfeng evaluation report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version",
+    "bundle_id",
+    "gate_results",
+    "summary"
+  ],
+  "properties": {
+    "report_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{4,64}$"
+    },
+    "gate_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger", "output", "end_to_end"],
+      "properties": {
+        "trigger": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["precision", "recall", "passed"],
+          "properties": {
+            "precision": { "type": "number", "minimum": 0, "maximum": 1 },
+            "recall": { "type": "number", "minimum": 0, "maximum": 1 },
+            "passed": { "type": "boolean" }
+          }
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mechanical_pass_rate", "passed"],
+          "properties": {
+            "mechanical_pass_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+            "passed": { "type": "boolean" }
+          }
+        },
+        "end_to_end": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["verdict", "winning_pairs", "style_fit_median", "quality_median_delta", "passed"],
+          "properties": {
+            "verdict": { "enum": ["pass", "limited", "blocked"] },
+            "winning_pairs": { "type": "integer", "minimum": 0 },
+            "style_fit_median": { "type": "number", "minimum": 0, "maximum": 5 },
+            "pairing_median_delta": { "type": "number" },
+            "quality_median_delta": { "type": "number" },
+            "undetermined_dimensions": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "passed": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["final_state"],
+      "properties": {
+        "final_state": { "enum": ["ready", "limited", "blocked", "incomplete"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

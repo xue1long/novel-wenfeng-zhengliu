@@ -1,0 +1,19 @@
+{
+  "source_id": "0a1b2c3d4e5f",
+  "source_fingerprint": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "raw_sha256": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+  "format": "txt",
+  "encoding": "utf-8",
+  "parser_version": "wenfeng-prepare-source/0.1.0",
+  "authorization": {
+    "scope": {
+      "model_processing": "hosted_with_consent",
+      "derivative_use": "private_only"
+    },
+    "evidence_basis": "user_declaration"
+  },
+  "authorization_type": "user_declaration",
+  "declared_derivative_use": "private_only",
+  "created_at": "private-ledger://synthetic-run/created",
+  "retention_until": "private-ledger://synthetic-run/retention"
+}

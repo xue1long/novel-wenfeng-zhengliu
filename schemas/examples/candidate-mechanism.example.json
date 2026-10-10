@@ -1,0 +1,44 @@
+{
+  "mechanism_id": "M01",
+  "dimension": "dialogue_subtext",
+  "rule": "After a consequential turn, place one visible response beat.",
+  "applies_when": "Any exchange that flips a decision.",
+  "do_steps": ["Add a single response beat after the consequential turn."],
+  "forbidden_when": "The exchange is a continuous factual summary.",
+  "stage_bindings": ["prose_draft", "revision"],
+  "evidence_refs": [
+    {
+      "chunk_id": "ck-0001-opening",
+      "chapter_id": "C001",
+      "scene_id": "SC01",
+      "char_offset": [0, 200],
+      "excerpt_hash": "5555555555555555555555555555555555555555555555555555555555555555"
+    },
+    {
+      "chunk_id": "ck-0002-meet",
+      "chapter_id": "C002",
+      "scene_id": "SC02",
+      "char_offset": [200, 400],
+      "excerpt_hash": "6666666666666666666666666666666666666666666666666666666666666666"
+    },
+    {
+      "chunk_id": "ck-0003-return",
+      "chapter_id": "C003",
+      "scene_id": "SC04",
+      "char_offset": [400, 600],
+      "excerpt_hash": "7777777777777777777777777777777777777777777777777777777777777777"
+    }
+  ],
+  "counterexample_refs": [
+    {
+      "chunk_id": "ck-0004-summary",
+      "chapter_id": "C001",
+      "scene_id": "SC03",
+      "char_offset": [600, 800],
+      "excerpt_hash": "8888888888888888888888888888888888888888888888888888888888888888",
+      "note": "A continuous factual summary does not need a response beat."
+    }
+  ],
+  "extraction_prompt_version": "extractors/dialogue_subtext.md@0.1.0",
+  "review_status": "supported"
+}

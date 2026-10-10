@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/compile-manifest.schema.json",
+  "title": "wenfeng compile manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "compiler_version",
+    "schema_version",
+    "template_version",
+    "source_id",
+    "bundle_id",
+    "skill_hashes",
+    "staging_path"
+  ],
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "compiler_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "template_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{12}$"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{4,64}$"
+    },
+    "skill_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "write_entry",
+        "scene_design",
+        "character_beats",
+        "prose_draft",
+        "style_check",
+        "revision"
+      ],
+      "properties": {
+        "write_entry":     { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "scene_design":    { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "character_beats": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "prose_draft":     { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "style_check":     { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "revision":        { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "staging_path": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "ordering": {
+      "enum": ["path_sorted", "insertion_order"],
+      "description": "ZIP / directory ordering policy. Stage A pins path_sorted."
+    }
+  }
+}

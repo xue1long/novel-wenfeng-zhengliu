@@ -1,0 +1,13 @@
+{
+  "policy_version": "0.1.0",
+  "shingle_size": 12,
+  "min_continuous_match": 32,
+  "overlimit_policy": "degrade_to_limited",
+  "controls": {
+    "positives_count": 20,
+    "negatives_count": 20,
+    "negative_misblock_max": 1,
+    "positive_miss_block_max": 0,
+    "blocking_categories": ["exact_copy", "named_character_profiles", "verbatim_long_passages"]
+  }
+}

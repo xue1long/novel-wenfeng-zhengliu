@@ -1,0 +1,10 @@
+Stage G aggregate gate PASSED:
+- Stage A/B/C/D/E/F gates still green
+- shareable happy path: package + verify-package
+- private-preview path: package + verify-package
+- blocked path denied on both profiles
+- install --dry-run does not touch the target
+- install --scope user writes the target; standard locations refused
+- Stage G scripts do not import any network module
+- release-manifest writer refuses private fields
+- Stage G is the final stage; the gating chain is A -> G

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/candidate-mechanism.schema.json",
+  "title": "wenfeng candidate mechanism",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "mechanism_id",
+    "dimension",
+    "rule",
+    "applies_when",
+    "do_steps",
+    "forbidden_when",
+    "stage_bindings",
+    "evidence_refs",
+    "counterexample_refs",
+    "extraction_prompt_version",
+    "review_status"
+  ],
+  "properties": {
+    "mechanism_id": {
+      "type": "string",
+      "pattern": "^M[0-9]{2,}$"
+    },
+    "dimension": {
+      "enum": [
+        "narrative_voice",
+        "sentence_rhythm",
+        "scene_transition",
+        "dialogue_subtext",
+        "imagery_rhetoric"
+      ]
+    },
+    "rule": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Plain-language rule; must not include source-specific phrases."
+    },
+    "applies_when": {
+      "type": "string",
+      "minLength": 1
+    },
+    "do_steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "forbidden_when": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage_bindings": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "write_entry",
+          "scene_design",
+          "character_beats",
+          "prose_draft",
+          "style_check",
+          "revision"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["chunk_id", "chapter_id", "scene_id", "char_offset", "excerpt_hash"],
+        "properties": {
+          "chunk_id": { "type": "string", "minLength": 1 },
+          "chapter_id": { "type": "string", "minLength": 1 },
+          "scene_id": { "type": "string", "minLength": 1 },
+          "char_offset": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": { "type": "integer", "minimum": 0 },
+            "x-wenfengRange": "open"
+          },
+          "excerpt_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "counterexample_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["chunk_id", "chapter_id", "scene_id", "char_offset", "excerpt_hash", "note"],
+        "properties": {
+          "chunk_id": { "type": "string", "minLength": 1 },
+          "chapter_id": { "type": "string", "minLength": 1 },
+          "scene_id": { "type": "string", "minLength": 1 },
+          "char_offset": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": { "type": "integer", "minimum": 0 },
+            "x-wenfengRange": "open"
+          },
+          "excerpt_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "note": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "extraction_prompt_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_status": {
+      "enum": ["pending", "supported", "limited", "unsupported"]
+    }
+  }
+}

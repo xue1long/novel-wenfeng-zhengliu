@@ -1,0 +1,32 @@
+{
+  "manifest_version": "0.1.0",
+  "bundle_id": "bundletestv0010",
+  "source_id": "0a1b2c3d4e5f",
+  "schema_version": "0.1.0",
+  "tool_version": "0.1.0",
+  "template_version": "0.1.0",
+  "compiler_version": "0.1.0",
+  "authorization_purpose": "shareable_anonymous",
+  "release_state": "ready",
+  "compatibility_targets": [
+    "wenfeng-distill@0.1.0"
+  ],
+  "skill_hashes": {
+    "write_entry": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "scene_design": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "character_beats": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "prose_draft": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "style_check": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "compile_manifest_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "eval_report_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_scan_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "zip_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "gate_status": {
+    "trigger": true,
+    "output": true,
+    "end_to_end": true
+  },
+  "build_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+}

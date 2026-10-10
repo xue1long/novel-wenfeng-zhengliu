@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/chunk-manifest.schema.json",
+  "title": "wenfeng chunk manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source_id", "parser_version", "chunks"],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{12}$"
+    },
+    "parser_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chunks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "chunk_id",
+          "chapter_id",
+          "scene_id",
+          "char_offset",
+          "window_hash",
+          "boundary_confidence"
+        ],
+        "properties": {
+          "chunk_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{4,64}$"
+          },
+          "chapter_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scene_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "char_offset": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": { "type": "integer", "minimum": 0 },
+            "x-wenfengRange": "open",
+            "description": "Half-open Unicode codepoint interval [start, end) on the canonicalized text."
+          },
+          "window_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "boundary_confidence": {
+            "enum": ["high", "medium", "low"]
+          },
+          "scene_classes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": ["opening", "character_intro", "daily", "dialogue", "conflict_climax", "reveal", "chapter_end"]
+            },
+            "description": "Model-assigned scene labels. Empty means unknown and does not count as sampling coverage."
+          }
+        }
+      }
+    }
+  }
+}

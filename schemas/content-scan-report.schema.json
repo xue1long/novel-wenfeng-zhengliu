@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/content-scan-report.schema.json",
+  "title": "wenfeng content scan report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version",
+    "policy_version",
+    "bundle_id",
+    "windows",
+    "coverage_summary"
+  ],
+  "properties": {
+    "report_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Pinned content-scan-policy.json version that produced this report."
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{4,64}$"
+    },
+    "windows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["window_id", "chunk_id", "result"],
+        "properties": {
+          "window_id": { "type": "string", "minLength": 1 },
+          "chunk_id": { "type": "string", "minLength": 1 },
+          "result": { "enum": ["checked", "risk", "inconclusive", "failed"] },
+          "shingle_hit_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+          "longest_continuous_match": { "type": "integer", "minimum": 0 },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "coverage_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_windows", "checked_windows", "risk_windows", "inconclusive_windows", "failed_windows"],
+      "properties": {
+        "total_windows": { "type": "integer", "minimum": 0 },
+        "checked_windows": { "type": "integer", "minimum": 0 },
+        "risk_windows": { "type": "integer", "minimum": 0 },
+        "inconclusive_windows": { "type": "integer", "minimum": 0 },
+        "failed_windows": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

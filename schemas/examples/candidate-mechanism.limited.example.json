@@ -1,0 +1,37 @@
+{
+  "mechanism_id": "M02",
+  "dimension": "imagery_rhetoric",
+  "rule": "Use one shared concrete image in the opening paragraph.",
+  "applies_when": "Stories that open inside a single setting.",
+  "do_steps": ["Place one concrete image in the opening paragraph."],
+  "forbidden_when": "Openings that switch settings in the first scene.",
+  "stage_bindings": ["scene_design"],
+  "evidence_refs": [
+    {
+      "chunk_id": "ck-0010-opening",
+      "chapter_id": "C010",
+      "scene_id": "SC10",
+      "char_offset": [0, 200],
+      "excerpt_hash": "9999999999999999999999999999999999999999999999999999999999999999"
+    },
+    {
+      "chunk_id": "ck-0011-opening",
+      "chapter_id": "C010",
+      "scene_id": "SC11",
+      "char_offset": [200, 400],
+      "excerpt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "counterexample_refs": [
+    {
+      "chunk_id": "ck-0099-skip",
+      "chapter_id": "C010",
+      "scene_id": "SC99",
+      "char_offset": [10000, 10200],
+      "excerpt_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "note": "An opening that swaps settings breaks the single-image anchor."
+    }
+  ],
+  "extraction_prompt_version": "extractors/imagery-rhetoric.md@0.1.0",
+  "review_status": "limited"
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/run-manifest.schema.json",
+  "title": "wenfeng run manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "source_id",
+    "run_model_budget_policy_version",
+    "scan_budget",
+    "status",
+    "step_log"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{4,64}$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{12}$"
+    },
+    "run_model_budget_policy_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Pinned version of policies/model-budget-policy.json for this run."
+    },
+    "scan_budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_requests", "max_input_tokens_total", "max_tokens_per_batch", "overlimit_policy"],
+      "properties": {
+        "max_requests": { "type": "integer", "minimum": 1 },
+        "max_input_tokens_total": { "type": "integer", "minimum": 1 },
+        "max_tokens_per_batch": { "type": "integer", "minimum": 1 },
+        "overlimit_policy": {
+          "enum": ["block", "degrade_to_limited", "retry"]
+        }
+      }
+    },
+    "status": {
+      "enum": ["incomplete", "blocked", "limited", "ready"]
+    },
+    "step_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "step_id",
+          "input_hash",
+          "prompt_template_version",
+          "model_id",
+          "output_path",
+          "output_hash",
+          "status",
+          "retry_count",
+          "error_type"
+        ],
+        "properties": {
+          "step_id": { "type": "string", "minLength": 1 },
+          "input_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "prompt_template_version": { "type": "string", "minLength": 1 },
+          "model_id": { "type": "string", "minLength": 1 },
+          "output_path": { "type": "string", "format": "uri-reference" },
+          "output_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "status": {
+            "enum": ["pending", "succeeded", "failed", "skipped"]
+          },
+          "retry_count": { "type": "integer", "minimum": 0, "maximum": 3 },
+          "error_type": { "type": "string" }
+        }
+      }
+    },
+    "created_at": { "type": "string", "format": "uri-reference" },
+    "last_resumed_at": { "type": "string", "format": "uri-reference" }
+  }
+}

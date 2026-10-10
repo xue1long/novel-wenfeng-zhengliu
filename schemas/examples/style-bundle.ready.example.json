@@ -1,0 +1,44 @@
+{
+  "schema_version": "2",
+  "bundle_version": "0.1.0",
+  "source_id": "0a1b2c3d4e5f",
+  "evidence_status": "approved",
+  "claimed_dimensions": ["dialogue_subtext", "imagery_rhetoric"],
+  "mechanisms": [
+    {
+      "mechanism_id": "M01",
+      "dimension": "dialogue_subtext",
+      "rule": "After a consequential turn, place one visible response beat.",
+      "do_steps": ["Add a single response beat after the consequential turn."],
+      "forbidden_when": "The exchange is a continuous factual summary.",
+      "review_status": "supported",
+      "stage_bindings": ["prose_draft", "revision"],
+      "evidence_summary": { "unique_scenes": 3, "unique_chapters": 2 }
+    },
+    {
+      "mechanism_id": "M02",
+      "dimension": "imagery_rhetoric",
+      "rule": "Anchor each opening with a single concrete image.",
+      "do_steps": ["Place one concrete image in the opening paragraph."],
+      "forbidden_when": "Openings that switch settings in the first scene.",
+      "review_status": "supported",
+      "stage_bindings": ["scene_design", "prose_draft"],
+      "evidence_summary": { "unique_scenes": 3, "unique_chapters": 2 }
+    }
+  ],
+  "stage_bindings": {
+    "write_entry": [],
+    "scene_design": ["M02"],
+    "character_beats": [],
+    "prose_draft": ["M01", "M02"],
+    "style_check": ["M01", "M02"],
+    "revision": ["M01"]
+  },
+  "content_exclusions": [
+    "named_character_profiles",
+    "named_locations",
+    "verbatim_short_passages",
+    "source_specific_imagery"
+  ],
+  "evaluation_ref": "private-ledger://synthetic-run/evaluation"
+}

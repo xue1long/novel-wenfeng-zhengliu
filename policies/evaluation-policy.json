@@ -1,0 +1,19 @@
+{
+  "policy_version": "0.1.0",
+  "trigger_cases": {
+    "must_trigger_count": 10,
+    "must_not_trigger_count": 10,
+    "boundary_count": 5
+  },
+  "thresholds": {
+    "precision_min": 0.90,
+    "recall_min": 0.90,
+    "output_mechanical_pass_min": 1.0,
+    "end_to_end_min_pairs": 6,
+    "end_to_end_min_winning_pairs": 4,
+    "end_to_end_min_pairing_median_delta": 0.5,
+    "end_to_end_min_style_fit_median": 4.0,
+    "end_to_end_min_quality_median_delta": -0.5,
+    "end_to_end_disagreement_threshold": 1.0
+  }
+}

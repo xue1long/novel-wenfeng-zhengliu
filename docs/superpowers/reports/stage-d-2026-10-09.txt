@@ -1,0 +1,6 @@
+Stage D aggregate gate PASSED:
+- Stage A/B/C gates still green
+- six Skill templates parse and match the data contract
+- six-stage state machine accepts legal handoffs and rejects every illegal edge
+- downstream reference invalidation propagates per spec ��4.6
+- templates ready for the wenfeng-distill factory Skill; this gate does NOT validate runtime behavior

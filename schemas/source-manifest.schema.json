@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/source-manifest.schema.json",
+  "title": "wenfeng source manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "source_fingerprint",
+    "raw_sha256",
+    "format",
+    "encoding",
+    "parser_version",
+    "authorization",
+    "authorization_type",
+    "declared_derivative_use",
+    "created_at",
+    "retention_until"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{12}$",
+      "description": "Non-semantic 12-char lowercase hex id. Must not be derived from titles or author names."
+    },
+    "source_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Versioned SHA-256 of normalized source text used by downstream evidence references."
+    },
+    "raw_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 of the original input file bytes; retained in the private run only."
+    },
+    "format": {
+      "enum": ["txt", "markdown"]
+    },
+    "encoding": {
+      "const": "utf-8"
+    },
+    "parser_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope"],
+      "properties": {
+        "scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["model_processing", "derivative_use"],
+          "properties": {
+            "model_processing": {
+              "enum": ["local_only", "hosted_with_consent", "hosted_only"],
+              "description": "User-consented model processing scope for this source."
+            },
+            "derivative_use": {
+              "enum": ["private_only", "shareable_with_attribution", "shareable_anonymous"],
+              "description": "Allowed derivative use for downstream artifacts."
+            }
+          }
+        },
+        "evidence_basis": {
+          "enum": ["user_declaration", "license_file", "publisher_grant"],
+          "description": "Basis recorded for the user's model-processing consent. System does not independently verify legal rights."
+        }
+      }
+    },
+    "authorization_type": {
+      "enum": ["user_declaration", "license_file", "publisher_grant"],
+      "description": "Top-level mirror of authorization.evidence_basis for auditing the model-processing consent record."
+    },
+    "declared_derivative_use": {
+      "enum": ["private_only", "shareable_with_attribution", "shareable_anonymous"],
+      "description": "Effective derivative-use scope; private_only is the default, while shareable scopes require explicit authorization."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "retention_until": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "Pointer to the retention record; never carries the source body."
+    }
+  }
+}

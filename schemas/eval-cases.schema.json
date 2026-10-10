@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wenfeng.local/schemas/eval-cases.schema.json",
+  "title": "wenfeng evaluation case structure",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_version",
+    "trigger_cases",
+    "output_cases",
+    "end_to_end_pairs"
+  ],
+  "properties": {
+    "case_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "trigger_cases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["must_trigger", "must_not_trigger", "boundary"],
+      "properties": {
+        "must_trigger": {
+          "type": "array",
+          "minItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["case_id", "stage_id", "input_excerpt"],
+            "properties": {
+              "case_id": { "type": "string", "minLength": 1 },
+              "stage_id": {
+                "enum": [
+                  "write_entry",
+                  "scene_design",
+                  "character_beats",
+                  "prose_draft",
+                  "style_check",
+                  "revision"
+                ]
+              },
+              "input_excerpt": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "must_not_trigger": {
+          "type": "array",
+          "minItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["case_id", "stage_id", "input_excerpt"],
+            "properties": {
+              "case_id": { "type": "string", "minLength": 1 },
+              "stage_id": {
+                "enum": [
+                  "write_entry",
+                  "scene_design",
+                  "character_beats",
+                  "prose_draft",
+                  "style_check",
+                  "revision"
+                ]
+              },
+              "input_excerpt": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "boundary": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["case_id", "input_excerpt"],
+            "properties": {
+              "case_id": { "type": "string", "minLength": 1 },
+              "input_excerpt": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    "output_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "stage_id", "kind"],
+        "properties": {
+          "case_id": { "type": "string", "minLength": 1 },
+          "stage_id": {
+            "enum": [
+              "write_entry",
+              "scene_design",
+              "character_beats",
+              "prose_draft",
+              "style_check",
+              "revision"
+            ]
+          },
+          "kind": { "enum": ["normal", "missing_input", "negative_rule", "stop_condition"] }
+        }
+      }
+    },
+    "end_to_end_pairs": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pair_id", "brief", "scenario_class"],
+        "properties": {
+          "pair_id": { "type": "string", "minLength": 1 },
+          "brief": { "type": "string", "minLength": 1 },
+          "scenario_class": { "type": "string", "minLength": 1 },
+          "baseline_score": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "object", "additionalProperties": true }
+            ]
+          },
+          "six_stage_score": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "object", "additionalProperties": true }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

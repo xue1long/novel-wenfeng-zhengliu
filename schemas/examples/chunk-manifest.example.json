@@ -1,0 +1,22 @@
+{
+  "source_id": "0a1b2c3d4e5f",
+  "parser_version": "wenfeng-prepare-source/0.1.0",
+  "chunks": [
+    {
+      "chunk_id": "ck-0001-opening",
+      "chapter_id": "C001",
+      "scene_id": "SC01",
+      "char_offset": [0, 487],
+      "window_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "boundary_confidence": "high"
+    },
+    {
+      "chunk_id": "ck-0002-meet",
+      "chapter_id": "C001",
+      "scene_id": "SC02",
+      "char_offset": [488, 1024],
+      "window_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+      "boundary_confidence": "medium"
+    }
+  ]
+}
